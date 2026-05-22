@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "agno>=2.6.9",
+    "chonkie[openai]>=1.6.7",
+    "lancedb>=0.30.2",
     "openai>=2.38.0",
+    "pypdf>=6.12.1",
     "python-dotenv>=1.2.2",
 ]

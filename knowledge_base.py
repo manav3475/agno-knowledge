@@ -1,15 +1,19 @@
-from agno.knowledge.reader import Reader
-from agno.knowledge.chunking.strategy import ChunkingStrategy, FixedSizeChunking
-from agno.knowledge.embedder.base import Embedder
+from agno.knowledge.reader.pdf_reader import PDFReader
+from agno.knowledge.chunking.semantic import SemanticChunking
+from agno.knowledge.embedder.openai import OpenAIEmbedder
+from agno.vectordb.lancedb import LanceDb
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# define the chunking strategy
-chunking_strategy = FixedSizeChunking(chunk_size=1000)
+#define the embedder
+embedder = OpenAIEmbedder()
 
-# create the reader
-reader = Reader(chunking_strategy=chunking_strategy)
+#define the chinking strategy
+chunking_strategy = SemanticChunking(embedder=embedder,
+                                     chunk_size=1000)
 
+# create the pdf reader
+reader = PDFReader(chunking_strategy=chunking_strategy)
 
 
